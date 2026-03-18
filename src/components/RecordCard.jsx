@@ -130,7 +130,7 @@ export default function RecordCard({ record, index }) {
     workDuration, totalWorkedMinutes, overtimeMinutes,
     breakCount, totalBreakMinutes, breaks = [],
     status, isOvernightShift, autoClosed, reason,
-    logout,
+    logout, shiftStart, shiftEnd,
   } = record;
 
   const hasLogout = logout && logoutIST !== 'Not Recorded';
@@ -211,6 +211,22 @@ export default function RecordCard({ record, index }) {
         gap: '1rem',
         padding: '1.5rem'
       }}>
+        {shiftStart && shiftStart !== '—' && (
+          <Stat
+            label="Shift Start"
+            value={shiftStart}
+            accent="var(--secondary)"
+            icon={<svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>}
+          />
+        )}
+        {shiftEnd && shiftEnd !== '—' && (
+          <Stat
+            label="Shift End"
+            value={shiftEnd}
+            accent="var(--secondary)"
+            icon={<svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>}
+          />
+        )}
         <Stat
           label="Check In"
           value={loginIST}

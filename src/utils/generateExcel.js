@@ -17,6 +17,8 @@ export async function generateAttendanceExcel({ records = [], title = 'Attendanc
     'Employee Name': r.userName || 'Unknown',
     'Date': r.dateIST || '—',
     'Status': r.status || '—',
+    'Shift Start': r.shiftStart || '—',
+    'Shift End': r.shiftEnd || '—',
     'Check In': r.loginIST || '—',
     'Check Out': r.logoutIST || '—',
     'Duration': r.workDuration || '—',
@@ -39,6 +41,8 @@ export async function generateAttendanceExcel({ records = [], title = 'Attendanc
     { wch: 25 }, // Employee Name
     { wch: 15 }, // Date
     { wch: 12 }, // Status
+    { wch: 15 }, // Shift Start
+    { wch: 15 }, // Shift End
     { wch: 15 }, // Check In
     { wch: 15 }, // Check Out
     { wch: 12 }, // Duration

@@ -482,7 +482,8 @@ export default function Dashboard({ apiUrl }) {
                           <tr style={{ color: 'var(--text-dim)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                             <th style={{ padding: '1rem 2rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>Employee</th>
                             <th style={{ padding: '1rem 1rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>Status</th>
-                            <th style={{ padding: '1rem 1rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>Shift Times</th>
+                            <th style={{ padding: '1rem 1rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>Roster Shift</th>
+                            <th style={{ padding: '1rem 1rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>Actual Times</th>
                             <th style={{ padding: '1rem 2rem', fontWeight: 800, borderBottom: '1px solid rgba(255,255,255,0.05)', textAlign: 'right' }}>Worked</th>
                           </tr>
                         </thead>
@@ -509,6 +510,9 @@ export default function Dashboard({ apiUrl }) {
                                 }}>
                                   {emp.status}
                                 </span>
+                              </td>
+                              <td style={{ padding: '1rem 1rem' }}>
+                                <div style={{ fontSize: '0.85rem', color: 'var(--secondary)', fontWeight: 600 }}>{emp.shiftStart && emp.shiftStart !== '—' ? `${emp.shiftStart} → ${emp.shiftEnd}` : 'No Roster'}</div>
                               </td>
                               <td style={{ padding: '1rem 1rem' }}>
                                 <div style={{ fontSize: '0.85rem', color: 'var(--text)', fontWeight: 600 }}>{emp.loginIST} → {emp.logoutIST}</div>
