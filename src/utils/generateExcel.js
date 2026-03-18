@@ -11,25 +11,6 @@ import * as XLSX from 'xlsx';
  * @param {{ records: Array, title: string }} opts
  */
 export async function generateAttendanceExcel({ records = [], title = 'Attendance Report' }) {
-  // #region agent log
-  fetch('http://127.0.0.1:7377/ingest/f47b4336-2861-489f-8c34-9211868aa4ba', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Debug-Session-Id': '461b59',
-    },
-    body: JSON.stringify({
-      sessionId: '461b59',
-      runId: 'pre-fix',
-      hypothesisId: 'H4',
-      location: 'src/utils/generateExcel.js:generateAttendanceExcel',
-      message: 'Excel generation called',
-      data: { recordCount: records.length },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion agent log
-
   /* ── 2. Prepare data ── */
   const worksheetData = records.map((r, i) => ({
     '#': i + 1,

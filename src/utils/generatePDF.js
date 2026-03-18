@@ -67,25 +67,6 @@ function statusColor(s = '') {
  * @param {{ records: Array, lastQuery: string, explanation: string, count: number }} opts
  */
 export async function generateAttendancePDF({ records = [], lastQuery = '', explanation = '', count = 0 }) {
-  // #region agent log
-  fetch('http://127.0.0.1:7377/ingest/f47b4336-2861-489f-8c34-9211868aa4ba', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Debug-Session-Id': '461b59',
-    },
-    body: JSON.stringify({
-      sessionId: '461b59',
-      runId: 'pre-fix',
-      hypothesisId: 'H3',
-      location: 'src/utils/generatePDF.js:generateAttendancePDF',
-      message: 'PDF generation called',
-      data: { recordCount: records.length },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion agent log
-
   /* ── 2. Create document ── */
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
   const PW  = doc.internal.pageSize.getWidth();   // 297 mm
